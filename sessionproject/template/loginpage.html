@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}{{ un }}{% endblock title %}
+{% block script %}
+
+function show(){
+    try
+    {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var myObj = JSON.parse(this.responseText);
+            var i;
+            var tdata="";
+                for(i=0;i < myObj.length; i++)
+                {
+                tdata = tdata+'<table>
+                    <tr>
+                        <td>myObj[i].name</td>
+                    </tr>
+                </table>'
+                }
+                document.getElementById("tab").innerHTML = tdata;
+          }
+        };
+        xmlhttp.open("GET", "/showdata/", true);
+        xmlhttp.send();
+    }catch(ex)
+            {
+                alert(ex);
+            }
+}
+
+{% endblock script %}
+{% block navbar %}
+        <nav class="navbar navbar-light bg-light justify-content-between">
+          <a class="navbar-brand">Welcome {{ Gen }} {{ un }}</a>
+            <a href="/logout/"><button class="btn btn-outline-danger my-2 my-sm-0">LogOut</button></a>
+        </nav>
+{% endblock navbar %}
+{% block sidebar %}
+<div class="list-group">
+    <a href="/loginpage/" class="list-group-item list-group-item-action"><button class="btn btn-outline-primary">Home</button></a>
+    <a href="/profile/" class="list-group-item list-group-item-action"><button class="btn btn-outline-primary">Profile</button></a>
+
+</div>
+{% endblock sidebar %}
+{% block loginform %}
+<h1 >Congrates! You are loged in. </h1>
+<button onclick="show();">Showdata</button>
+<div id="tab">
+
+</div>
+{% endblock %}

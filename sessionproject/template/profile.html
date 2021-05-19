@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}{{ data.Name }}{% endblock title %}
+{% block navbar %}
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Welcome {{ Gen }} {{ data.Name }}</a>
+        <a href="/logout/"><button class="btn btn-outline-danger my-2 my-sm-0">LogOut</button></a>
+    </nav>
+{% endblock navbar %}
+{% block sidebar %}
+<div class="list-group">
+    <a href="/loginpage/" class="list-group-item list-group-item-action"><button class="btn btn-outline-primary">Home</button></a>
+    <a href="/profile/" class="list-group-item list-group-item-action"><button class="btn btn-outline-primary">Profile</button></a>
+</div>
+{% endblock sidebar %}
+{% block loginform %}
+<table class="table table-stripped">
+    <tr>
+        <td>Name - {{ data.Name }}</td>
+    </tr>
+    <tr>
+        <td>Mobile No. - {{ data.Mob_No }}</td>
+    </tr>
+    <tr>
+        <td>Gender. - {{ data.Gender }}</td>
+    </tr>
+    <tr>
+        <td>Email - {{ data.Email }}</td>
+    </tr>
+    <tr>
+        <td><a href="/update/"><button>Edit Profile</button></a></td>
+    </tr>
+</table>
+{% endblock loginform %}

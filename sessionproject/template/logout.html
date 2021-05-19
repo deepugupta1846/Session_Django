@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ data.Name }}{% endblock title %}
+{% block navbar %}
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Welcome {{ data.Name }}</a>
+
+    </nav>
+{% endblock navbar %}
+
+{% block loginform %}
+{{ msg }}
+<p>Please Login Again !!!</p>
+<a href="/logout/"><button class="btn btn-outline-danger my-2 my-sm-0">LogOut</button></a>
+{% endblock loginform %}
